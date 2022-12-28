@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inheritance and Prototype</title>
+    <style type="text/css">
+        li div{
+            font-weight: bold;
+            color: blue;
+        }
+        li pre{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h2>INHERITANCE AND PROTOTYPE</h2>
+    <ol type="1">
+        <li>
+            <div>Create 2 objects - parent and child. Attach methods to parent and use those methods in child object using parents prototype:</div>
+            <pre>const parent={
+                calculate(){
+                    console.log(`${this.fName} ${this.lName} ${this.id}`);
+                }
+            }
+            const child1=Object.create(parent);
+            const child2=Object.create(parent);
+            child1.fName="India";
+            child1.lName="Bharat";
+            child2.fName="Pakistan";
+            child2.lName="Bharat";
+            child1.calculate();
+            child2.calculate();</pre>
+        </li>
+        <li>
+            <div>Write code to explain prototype chaining:</div>
+            <pre>const ram={
+                fName:"ram",
+                lName:"kumar",
+                roll:26,
+                showDetails:function(){
+                    console.log(`I am ${this.fName}${this.lName},my roll no is ${this.roll}`);
+                }
+            }
+            const bharath={
+                fName:"bharath",
+            }
+            bharath.__proto__=ram;//if shyam has lName and roll....get into the ram object is there give the value as lName and roll.
+            console.log(bharath);
+            console.log(bharath.fName);
+            console.log(bharath.lName);
+            console.log(bharath.roll);</pre>
+        </li>
+        <li>
+            <div>Add a method to calculate sum of all elements in Array in array's protype, use that method to calculate sum for multiple arrays:</div>
+            <pre>      const AddSum = {
+                name: "EA16",
+                add : function(a){
+                    let sum = 0;
+                    for(let i = 0 ; i < a.length ; i++){
+                        sum += a[i];
+                    }  
+                    console.log(sum);  
+                }
+            }</pre>
+        </li>
+        <li>
+            <div>Write a JavaScript function to retrieve all the names of object's own and inherited properties:</div>
+            <pre>const PersonPrototype = {
+                initialise(name){
+                    this.name=name;
+                }
+            }
+            const steven=Object.create(PersonPrototype);
+            steven.initialise("Steven");
+            const kristin=Object.create(PersonPrototype);
+            kristin.initialise("Kristin");
+            console.log(steven);
+            console.log(kristin);</pre>
+        </li>
+    </ol>
+
+    <script type="text/javascript">
+const parent={
+        calculate(){
+            console.log(`${this.fName} ${this.lName} ${this.id}`);
+        }
+    }
+    const child1=Object.create(parent);
+    const child2=Object.create(parent);
+    child1.fName="India";
+    child1.lName="Bharat";
+    child2.fName="Pakistan";
+    child2.lName="Bharat";
+    child1.calculate();
+    child2.calculate();
+
+
+
+const ram={
+    fName:"ram",
+    lName:"kumar",
+    roll:26,
+    showDetails:function(){
+        console.log(`I am ${this.fName}${this.lName},my roll no is ${this.roll}`);
+    }
+}
+const bharath={
+    fName:"bharath",
+}
+bharath.__proto__=ram;//if shyam has lName and roll....get into the ram object is there give the value as lName and roll.
+console.log(bharath);
+console.log(bharath.fName);
+console.log(bharath.lName);
+console.log(bharath.roll);
+////////////////////
+
+
+
+
+
+
+      const AddSum = {
+    name: "EA16",
+    add : function(a){
+        let sum = 0;
+        for(let i = 0 ; i < a.length ; i++){
+            sum += a[i];
+        }  
+        console.log(sum);  
+    }
+}
+
+AddSum.add([1,2,3,4,5]);
+
+const PersonPrototype = {
+    initialise(name){
+        this.name=name;
+    }
+}
+const steven=Object.create(PersonPrototype);
+steven.initialise("Steven");
+const kristin=Object.create(PersonPrototype);
+kristin.initialise("Kristin");
+console.log(steven);
+console.log(kristin);
+
+// let car1={
+//     type:"petrol",
+//     kilo:450,
+// }
+// let car2={
+//     type:"electrical",
+//     kilo:650,
+// }
+// let car3={...{car1},...{car2}}
+// console.log(car3);
+
+    </script>
+</body>
+</html>
